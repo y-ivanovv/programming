@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
@@ -51,6 +51,7 @@ vector<Student> readfile(const string& filename) {
 
 		students.push_back(student);
 	}
+	file.close();
 	return students;
 }
 
@@ -76,6 +77,7 @@ void savefile(const vector<Student>& students, const string& filename) {
 				<< student.speciality << "\n";
 		}
 	}
+	file.close();
 }
 
 int main() {
