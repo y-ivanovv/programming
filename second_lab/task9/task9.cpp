@@ -2,7 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include <cstring> // Для функции strcpy
+#include <cstring> // Р”Р»СЏ С„СѓРЅРєС†РёРё strcpy
 
 using namespace std;
 
@@ -16,7 +16,7 @@ struct Student {
 void writeStudents(const string& filename, const vector<Student>& students) {
     ofstream file(filename, ios::binary);
     if (!file) {
-        throw runtime_error("Не удалось открыть файл для записи: " + filename);
+        throw runtime_error("РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё: " + filename);
     }
 
     for (const auto& student : students) {
@@ -28,7 +28,7 @@ void writeStudents(const string& filename, const vector<Student>& students) {
 vector<Student> readStudents(const string& filename) {
     ifstream file(filename, ios::binary);
     if (!file) {
-        throw runtime_error("Не удалось открыть файл для чтения: " + filename);
+        throw runtime_error("РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РґР»СЏ С‡С‚РµРЅРёСЏ: " + filename);
     }
 
     vector<Student> students;
@@ -57,10 +57,10 @@ void updateScholarships(vector<Student>& students) {
 
 void printStudents(const vector<Student>& students) {
     for (const auto& student : students) {
-        cout << "ФИО: " << student.name << '\n';
-        cout << "Группа: " << student.groupNumber << '\n';
-        cout << "Оценки: " << student.grades[0] << ", " << student.grades[1] << ", " << student.grades[2] << '\n';
-        cout << "Стипендия: " << student.scholarship << '\n';
+        cout << "Р¤РРћ: " << student.name << '\n';
+        cout << "Р“СЂСѓРїРїР°: " << student.groupNumber << '\n';
+        cout << "РћС†РµРЅРєРё: " << student.grades[0] << ", " << student.grades[1] << ", " << student.grades[2] << '\n';
+        cout << "РЎС‚РёРїРµРЅРґРёСЏ: " << student.scholarship << '\n';
         cout << "--------------------------\n";
     }
 }
@@ -70,29 +70,29 @@ int main() {
 
     string filename = "products.dat";
 
-    // Создание и запись студентов в файл
+    // РЎРѕР·РґР°РЅРёРµ Рё Р·Р°РїРёСЃСЊ СЃС‚СѓРґРµРЅС‚РѕРІ РІ С„Р°Р№Р»
     vector<Student> students = {
-        {"Иванов И.И.", 101, {5, 4, 4}, 1000.0},
-        {"Петров П.П.", 102, {3, 4, 5}, 1000.0},
-        {"Сидоров С.С.", 103, {5, 5, 5}, 1000.0},
+        {"РРІР°РЅРѕРІ Р.Р.", 101, {5, 4, 4}, 1000.0},
+        {"РџРµС‚СЂРѕРІ Рџ.Рџ.", 102, {3, 4, 5}, 1000.0},
+        {"РЎРёРґРѕСЂРѕРІ РЎ.РЎ.", 103, {5, 5, 5}, 1000.0},
     };
 
     writeStudents(filename, students);
 
-    // Чтение данных из файла и вывод на экран
+    // Р§С‚РµРЅРёРµ РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р° Рё РІС‹РІРѕРґ РЅР° СЌРєСЂР°РЅ
     vector<Student> fileData = readStudents(filename);
-    cout << "Студенты до изменения:\n";
+    cout << "РЎС‚СѓРґРµРЅС‚С‹ РґРѕ РёР·РјРµРЅРµРЅРёСЏ:\n";
     printStudents(fileData);
 
-    // Обновление стипендий
+    // РћР±РЅРѕРІР»РµРЅРёРµ СЃС‚РёРїРµРЅРґРёР№
     updateScholarships(fileData);
 
-    // Запись измененных данных обратно в файл
+    // Р—Р°РїРёСЃСЊ РёР·РјРµРЅРµРЅРЅС‹С… РґР°РЅРЅС‹С… РѕР±СЂР°С‚РЅРѕ РІ С„Р°Р№Р»
     writeStudents(filename, fileData);
 
-    // Чтение измененных данных из файла и вывод на экран
+    // Р§С‚РµРЅРёРµ РёР·РјРµРЅРµРЅРЅС‹С… РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р° Рё РІС‹РІРѕРґ РЅР° СЌРєСЂР°РЅ
     fileData = readStudents(filename);
-    cout << "Студенты после изменения:\n";
+    cout << "РЎС‚СѓРґРµРЅС‚С‹ РїРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ:\n";
     printStudents(fileData);
 
     return 0;
