@@ -7,7 +7,7 @@
 
 using namespace std;
 
-// Структура для представления файла
+// РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ С„Р°Р№Р»Р°
 struct File {
     string name;
     time_t creationDate;
@@ -15,60 +15,60 @@ struct File {
 
     File(const string& n, time_t cDate, int aCount) : name(n), creationDate(cDate), accessCount(aCount) {}
 
-    // Функция для вывода информации о файле
+    // Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёРё Рѕ С„Р°Р№Р»Рµ
     void printInfo() const {
         char buffer[26];
         ctime_s(buffer, sizeof(buffer), &creationDate);
-        cout << "Имя файла: " << name << endl;
-        cout << "Дата создания: " << buffer; // Преобразование времени в строку
-        cout << "Количество обращений: " << accessCount << endl;
+        cout << "РРјСЏ С„Р°Р№Р»Р°: " << name << endl;
+        cout << "Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ: " << buffer; // РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІСЂРµРјРµРЅРё РІ СЃС‚СЂРѕРєСѓ
+        cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ РѕР±СЂР°С‰РµРЅРёР№: " << accessCount << endl;
     }
 };
 
-// Функция для отображения меню
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РјРµРЅСЋ
 void displayMenu() {
-    cout << "\nМеню:" << endl;
-    cout << "1. Формирование каталога файлов" << endl;
-    cout << "2. Вывод каталога файлов" << endl;
-    cout << "3. Удаление файлов по дате создания" << endl;
-    cout << "4. Файл с наибольшим количеством обращений" << endl;
-    cout << "0. Выйти" << endl;
-    cout << "Выберите действие: ";
+    cout << "\nРњРµРЅСЋ:" << endl;
+    cout << "1. Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ РєР°С‚Р°Р»РѕРіР° С„Р°Р№Р»РѕРІ" << endl;
+    cout << "2. Р’С‹РІРѕРґ РєР°С‚Р°Р»РѕРіР° С„Р°Р№Р»РѕРІ" << endl;
+    cout << "3. РЈРґР°Р»РµРЅРёРµ С„Р°Р№Р»РѕРІ РїРѕ РґР°С‚Рµ СЃРѕР·РґР°РЅРёСЏ" << endl;
+    cout << "4. Р¤Р°Р№Р» СЃ РЅР°РёР±РѕР»СЊС€РёРј РєРѕР»РёС‡РµСЃС‚РІРѕРј РѕР±СЂР°С‰РµРЅРёР№" << endl;
+    cout << "0. Р’С‹Р№С‚Рё" << endl;
+    cout << "Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ: ";
 }
 
-// Функция для начального формирования каталога файлов
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РЅР°С‡Р°Р»СЊРЅРѕРіРѕ С„РѕСЂРјРёСЂРѕРІР°РЅРёСЏ РєР°С‚Р°Р»РѕРіР° С„Р°Р№Р»РѕРІ
 void initializeCatalog(list<File>& catalog) {
     int n;
-    cout << "Введите количество файлов: ";
+    cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ С„Р°Р№Р»РѕРІ: ";
     cin >> n;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Очистка буфера ввода
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // РћС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° РІРІРѕРґР°
 
     for (int i = 0; i < n; ++i) {
         string name;
         int day, month, year, accessCount;
-        cout << "Введите имя файла: ";
+        cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ С„Р°Р№Р»Р°: ";
         getline(cin, name);
-        cout << "Введите дату создания (дд мм гггг): ";
+        cout << "Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ СЃРѕР·РґР°РЅРёСЏ (РґРґ РјРј РіРіРіРі): ";
         cin >> day >> month >> year;
-        cout << "Введите количество обращений: ";
+        cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕР±СЂР°С‰РµРЅРёР№: ";
         cin >> accessCount;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Очистка буфера ввода
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // РћС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° РІРІРѕРґР°
 
-        // Формирование времени
+        // Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ РІСЂРµРјРµРЅРё
         struct tm tm = {};
         tm.tm_mday = day;
-        tm.tm_mon = month - 1; // месяцы начинаются с 0
-        tm.tm_year = year - 1900; // годы считаются с 1900
+        tm.tm_mon = month - 1; // РјРµСЃСЏС†С‹ РЅР°С‡РёРЅР°СЋС‚СЃСЏ СЃ 0
+        tm.tm_year = year - 1900; // РіРѕРґС‹ СЃС‡РёС‚Р°СЋС‚СЃСЏ СЃ 1900
         time_t creationDate = mktime(&tm);
 
         catalog.emplace_back(name, creationDate, accessCount);
     }
 }
 
-// Функция для вывода каталога файлов
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РІРѕРґР° РєР°С‚Р°Р»РѕРіР° С„Р°Р№Р»РѕРІ
 void displayCatalog(const list<File>& catalog) {
     if (catalog.empty()) {
-        cout << "Каталог пуст." << endl;
+        cout << "РљР°С‚Р°Р»РѕРі РїСѓСЃС‚." << endl;
     }
     else {
         for (const auto& file : catalog) {
@@ -78,22 +78,22 @@ void displayCatalog(const list<File>& catalog) {
     }
 }
 
-// Функция для удаления файлов по дате создания
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ С„Р°Р№Р»РѕРІ РїРѕ РґР°С‚Рµ СЃРѕР·РґР°РЅРёСЏ
 void removeFilesByDate(list<File>& catalog, time_t date) {
     catalog.remove_if([date](const File& file) { return file.creationDate < date; });
-    cout << "Удаление выполнено." << endl;
+    cout << "РЈРґР°Р»РµРЅРёРµ РІС‹РїРѕР»РЅРµРЅРѕ." << endl;
 }
 
-// Функция для нахождения файла с наибольшим количеством обращений
+// Р¤СѓРЅРєС†РёСЏ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ С„Р°Р№Р»Р° СЃ РЅР°РёР±РѕР»СЊС€РёРј РєРѕР»РёС‡РµСЃС‚РІРѕРј РѕР±СЂР°С‰РµРЅРёР№
 void findFileWithMaxAccess(const list<File>& catalog) {
     if (catalog.empty()) {
-        cout << "Каталог пуст." << endl;
+        cout << "РљР°С‚Р°Р»РѕРі РїСѓСЃС‚." << endl;
     }
     else {
         auto maxFile = max_element(catalog.begin(), catalog.end(), [](const File& a, const File& b) {
             return a.accessCount < b.accessCount;
             });
-        cout << "Файл с наибольшим количеством обращений:" << endl;
+        cout << "Р¤Р°Р№Р» СЃ РЅР°РёР±РѕР»СЊС€РёРј РєРѕР»РёС‡РµСЃС‚РІРѕРј РѕР±СЂР°С‰РµРЅРёР№:" << endl;
         maxFile->printInfo();
     }
 }
@@ -117,10 +117,10 @@ int main() {
             break;
         case 3: {
             int day, month, year;
-            cout << "Введите дату (дд мм гггг): ";
+            cout << "Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ (РґРґ РјРј РіРіРіРі): ";
             cin >> day >> month >> year;
 
-            // Формирование времени
+            // Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ РІСЂРµРјРµРЅРё
             struct tm tm = {};
             tm.tm_mday = day;
             tm.tm_mon = month - 1;
@@ -134,10 +134,10 @@ int main() {
             findFileWithMaxAccess(catalog);
             break;
         case 0:
-            cout << "Выход из программы." << endl;
+            cout << "Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹." << endl;
             break;
         default:
-            cout << "Неверный выбор. Повторите попытку." << endl;
+            cout << "РќРµРІРµСЂРЅС‹Р№ РІС‹Р±РѕСЂ. РџРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ." << endl;
             break;
         }
     } while (choice != 0);
