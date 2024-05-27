@@ -51,7 +51,7 @@ public:
     virtual void printInfo() const = 0;
     virtual string getType() const = 0;
 
-    // Добавляем виртуальный метод для изменения параметров транспортного средства
+    // Р”РѕР±Р°РІР»СЏРµРј РІРёСЂС‚СѓР°Р»СЊРЅС‹Р№ РјРµС‚РѕРґ РґР»СЏ РёР·РјРµРЅРµРЅРёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР°
     virtual void changeParameters() = 0;
 };
 
@@ -64,22 +64,22 @@ public:
     CPlane(double p, double s, int y, double x, double y_val, double a, int pass) : CVehicle(p, s, y, x, y_val), altitude(a), passengers(pass) {}
 
     void printInfo() const override {
-        cout << "Тип: Самолет" << endl;
-        cout << "Координаты: (" << getX() << ", " << getY() << ")" << endl;
-        cout << "Цена: " << getPrice() << " руб." << endl;
-        cout << "Скорость: " << getSpeed() << " км/ч" << endl;
-        cout << "Год выпуска: " << getYear() << endl;
-        cout << "Высота: " << altitude << " м" << endl;
-        cout << "Количество пассажиров: " << passengers << endl;
+        cout << "РўРёРї: РЎР°РјРѕР»РµС‚" << endl;
+        cout << "РљРѕРѕСЂРґРёРЅР°С‚С‹: (" << getX() << ", " << getY() << ")" << endl;
+        cout << "Р¦РµРЅР°: " << getPrice() << " СЂСѓР±." << endl;
+        cout << "РЎРєРѕСЂРѕСЃС‚СЊ: " << getSpeed() << " РєРј/С‡" << endl;
+        cout << "Р“РѕРґ РІС‹РїСѓСЃРєР°: " << getYear() << endl;
+        cout << "Р’С‹СЃРѕС‚Р°: " << altitude << " Рј" << endl;
+        cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ РїР°СЃСЃР°Р¶РёСЂРѕРІ: " << passengers << endl;
     }
 
     string getType() const override {
-        return "Самолет";
+        return "РЎР°РјРѕР»РµС‚";
     }
 
-    // Реализация метода для изменения параметров самолета
+    // Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° РґР»СЏ РёР·РјРµРЅРµРЅРёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ СЃР°РјРѕР»РµС‚Р°
     void changeParameters() override {
-        cout << "Введите новую цену, скорость, год выпуска, высоту и количество пассажиров: ";
+        cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІСѓСЋ С†РµРЅСѓ, СЃРєРѕСЂРѕСЃС‚СЊ, РіРѕРґ РІС‹РїСѓСЃРєР°, РІС‹СЃРѕС‚Сѓ Рё РєРѕР»РёС‡РµСЃС‚РІРѕ РїР°СЃСЃР°Р¶РёСЂРѕРІ: ";
         double new_price, new_speed, new_altitude;
         int new_year, new_passengers;
         cin >> new_price >> new_speed >> new_year >> new_altitude >> new_passengers;
@@ -97,21 +97,21 @@ public:
     CCar(double p, double s, int y, double x, double y_val, int pass) : CVehicle(p, s, y, x, y_val), passengers(pass) {}
 
     void printInfo() const override {
-        cout << "Тип: Автомобиль" << endl;
-        cout << "Координаты: (" << getX() << ", " << getY() << ")" << endl;
-        cout << "Цена: " << getPrice() << " руб." << endl;
-        cout << "Скорость: " << getSpeed() << " км/ч" << endl;
-        cout << "Год выпуска: " << getYear() << endl;
-        cout << "Количество пассажиров: " << passengers << endl;
+        cout << "РўРёРї: РђРІС‚РѕРјРѕР±РёР»СЊ" << endl;
+        cout << "РљРѕРѕСЂРґРёРЅР°С‚С‹: (" << getX() << ", " << getY() << ")" << endl;
+        cout << "Р¦РµРЅР°: " << getPrice() << " СЂСѓР±." << endl;
+        cout << "РЎРєРѕСЂРѕСЃС‚СЊ: " << getSpeed() << " РєРј/С‡" << endl;
+        cout << "Р“РѕРґ РІС‹РїСѓСЃРєР°: " << getYear() << endl;
+        cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ РїР°СЃСЃР°Р¶РёСЂРѕРІ: " << passengers << endl;
     }
 
     string getType() const override {
-        return "Автомобиль";
+        return "РђРІС‚РѕРјРѕР±РёР»СЊ";
     }
 
-    // Реализация метода для изменения параметров автомобиля
+    // Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° РґР»СЏ РёР·РјРµРЅРµРЅРёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ Р°РІС‚РѕРјРѕР±РёР»СЏ
     void changeParameters() override {
-        cout << "Введите новую цену, скорость, год выпуска и количество пассажиров: ";
+        cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІСѓСЋ С†РµРЅСѓ, СЃРєРѕСЂРѕСЃС‚СЊ, РіРѕРґ РІС‹РїСѓСЃРєР° Рё РєРѕР»РёС‡РµСЃС‚РІРѕ РїР°СЃСЃР°Р¶РёСЂРѕРІ: ";
         double new_price, new_speed;
         int new_year, new_passengers;
         cin >> new_price >> new_speed >> new_year >> new_passengers;
@@ -129,22 +129,22 @@ public:
     CShip(double p, double s, int y, double x, double y_val, int pass, const string& prt) : CVehicle(p, s, y, x, y_val), passengers(pass), port(prt) {}
 
     void printInfo() const override {
-        cout << "Тип: Корабль" << endl;
-        cout << "Координаты: (" << getX() << ", " << getY() << ")" << endl;
-        cout << "Цена: " << getPrice() << " руб." << endl;
-        cout << "Скорость: " << getSpeed() << " км/ч" << endl;
-        cout << "Год выпуска: " << getYear() << endl;
-        cout << "Количество пассажиров: " << passengers << endl;
-        cout << "Порт приписки: " << port << endl;
+        cout << "РўРёРї: РљРѕСЂР°Р±Р»СЊ" << endl;
+        cout << "РљРѕРѕСЂРґРёРЅР°С‚С‹: (" << getX() << ", " << getY() << ")" << endl;
+        cout << "Р¦РµРЅР°: " << getPrice() << " СЂСѓР±." << endl;
+        cout << "РЎРєРѕСЂРѕСЃС‚СЊ: " << getSpeed() << " РєРј/С‡" << endl;
+        cout << "Р“РѕРґ РІС‹РїСѓСЃРєР°: " << getYear() << endl;
+        cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ РїР°СЃСЃР°Р¶РёСЂРѕРІ: " << passengers << endl;
+        cout << "РџРѕСЂС‚ РїСЂРёРїРёСЃРєРё: " << port << endl;
     }
 
     string getType() const override {
-        return "Корабль";
+        return "РљРѕСЂР°Р±Р»СЊ";
     }
 
-    // Реализация метода для изменения параметров корабля
+    // Р РµР°Р»РёР·Р°С†РёСЏ РјРµС‚РѕРґР° РґР»СЏ РёР·РјРµРЅРµРЅРёСЏ РїР°СЂР°РјРµС‚СЂРѕРІ РєРѕСЂР°Р±Р»СЏ
     void changeParameters() override {
-        cout << "Введите новую цену, скорость, год выпуска, количество пассажиров и порт приписки: ";
+        cout << "Р’РІРµРґРёС‚Рµ РЅРѕРІСѓСЋ С†РµРЅСѓ, СЃРєРѕСЂРѕСЃС‚СЊ, РіРѕРґ РІС‹РїСѓСЃРєР°, РєРѕР»РёС‡РµСЃС‚РІРѕ РїР°СЃСЃР°Р¶РёСЂРѕРІ Рё РїРѕСЂС‚ РїСЂРёРїРёСЃРєРё: ";
         double new_price, new_speed;
         int new_year, new_passengers;
         string new_port;
@@ -160,25 +160,25 @@ int main() {
 
     vector<CVehicle*> vehicles;
 
-    // Создаем объекты разных классов и добавляем их в вектор
+    // РЎРѕР·РґР°РµРј РѕР±СЉРµРєС‚С‹ СЂР°Р·РЅС‹С… РєР»Р°СЃСЃРѕРІ Рё РґРѕР±Р°РІР»СЏРµРј РёС… РІ РІРµРєС‚РѕСЂ
     vehicles.push_back(new CPlane(10000000, 900, 2020, 10, 20, 10000, 300));
     vehicles.push_back(new CCar(500000, 150, 2018, 30, 40, 5));
     vehicles.push_back(new CShip(20000000, 50, 2015, 50, 60, 500, "Rotterdam"));
 
-    // Меню для проверки методов классов
+    // РњРµРЅСЋ РґР»СЏ РїСЂРѕРІРµСЂРєРё РјРµС‚РѕРґРѕРІ РєР»Р°СЃСЃРѕРІ
     int choice;
     do {
-        cout << "\nМеню:" << endl;
-        cout << "1. Вывести информацию о всех транспортных средствах" << endl;
-        cout << "2. Вывести информацию о конкретном транспортном средстве" << endl;
-        cout << "3. Изменить параметры транспортного средства" << endl;
-        cout << "0. Выйти" << endl;
-        cout << "Выберите действие: ";
+        cout << "\nРњРµРЅСЋ:" << endl;
+        cout << "1. Р’С‹РІРµСЃС‚Рё РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РІСЃРµС… С‚СЂР°РЅСЃРїРѕСЂС‚РЅС‹С… СЃСЂРµРґСЃС‚РІР°С…" << endl;
+        cout << "2. Р’С‹РІРµСЃС‚Рё РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєРѕРЅРєСЂРµС‚РЅРѕРј С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРј СЃСЂРµРґСЃС‚РІРµ" << endl;
+        cout << "3. РР·РјРµРЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂС‹ С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР°" << endl;
+        cout << "0. Р’С‹Р№С‚Рё" << endl;
+        cout << "Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ: ";
         cin >> choice;
 
         switch (choice) {
         case 1:
-            cout << "\nИнформация о транспортных средствах:" << endl;
+            cout << "\nРРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚СЂР°РЅСЃРїРѕСЂС‚РЅС‹С… СЃСЂРµРґСЃС‚РІР°С…:" << endl;
             for (const auto& vehicle : vehicles) {
                 vehicle->printInfo();
                 cout << endl;
@@ -186,36 +186,36 @@ int main() {
             break;
         case 2:
             int index;
-            cout << "Введите индекс транспортного средства: ";
+            cout << "Р’РІРµРґРёС‚Рµ РёРЅРґРµРєСЃ С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР°: ";
             cin >> index;
             if (index >= 0 && index < vehicles.size()) {
                 vehicles[index]->printInfo();
             }
             else {
-                cout << "Неверный индекс." << endl;
+                cout << "РќРµРІРµСЂРЅС‹Р№ РёРЅРґРµРєСЃ." << endl;
             }
             break;
         case 3:
             int vehicleIndex;
-            cout << "Введите индекс транспортного средства, параметры которого нужно изменить: ";
+            cout << "Р’РІРµРґРёС‚Рµ РёРЅРґРµРєСЃ С‚СЂР°РЅСЃРїРѕСЂС‚РЅРѕРіРѕ СЃСЂРµРґСЃС‚РІР°, РїР°СЂР°РјРµС‚СЂС‹ РєРѕС‚РѕСЂРѕРіРѕ РЅСѓР¶РЅРѕ РёР·РјРµРЅРёС‚СЊ: ";
             cin >> vehicleIndex;
             if (vehicleIndex >= 0 && vehicleIndex < vehicles.size()) {
                 vehicles[vehicleIndex]->changeParameters();
             }
             else {
-                cout << "Неверный индекс." << endl;
+                cout << "РќРµРІРµСЂРЅС‹Р№ РёРЅРґРµРєСЃ." << endl;
             }
             break;
         case 0:
-            cout << "Выход из программы." << endl;
+            cout << "Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹." << endl;
             break;
         default:
-            cout << "Неверный выбор. Повторите попытку." << endl;
+            cout << "РќРµРІРµСЂРЅС‹Р№ РІС‹Р±РѕСЂ. РџРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ." << endl;
             break;
         }
     } while (choice != 0);
 
-    // Очищаем выделенную память
+    // РћС‡РёС‰Р°РµРј РІС‹РґРµР»РµРЅРЅСѓСЋ РїР°РјСЏС‚СЊ
     for (auto& vehicle : vehicles) {
         delete vehicle;
     }
