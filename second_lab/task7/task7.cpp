@@ -15,7 +15,7 @@ struct Product {
 void writeProducts(const string& filename, const vector<Product>& products) {
     ofstream file(filename, ios::binary);
     if (!file) {
-        throw runtime_error("Не удалось открыть файл для записи: " + filename);
+        throw runtime_error("РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё: " + filename);
     }
 
     for (const auto& product : products) {
@@ -27,7 +27,7 @@ void writeProducts(const string& filename, const vector<Product>& products) {
 Product readMostExpensiveProduct(const string& filename) {
     ifstream file(filename, ios::binary);
     if (!file) {
-        throw runtime_error("Не удалось открыть файл для чтения: " + filename);
+        throw runtime_error("РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РґР»СЏ С‡С‚РµРЅРёСЏ: " + filename);
     }
 
     Product mostExpensiveProduct;
@@ -48,24 +48,24 @@ int main() {
     setlocale(LC_ALL, "ru");
     string filename = "products.dat";
 
-    // Создание и запись продуктов в файл
+    // РЎРѕР·РґР°РЅРёРµ Рё Р·Р°РїРёСЃСЊ РїСЂРѕРґСѓРєС‚РѕРІ РІ С„Р°Р№Р»
     vector<Product> products = {
-        {"Картошка", 100.0, "руб"},
-        {"Помидор", 150.0, "руб"},
-        {"Хлеб", 200.0, "руб"},
-        {"Йогурт", 175.0, "руб"},
+        {"РљР°СЂС‚РѕС€РєР°", 100.0, "СЂСѓР±"},
+        {"РџРѕРјРёРґРѕСЂ", 150.0, "СЂСѓР±"},
+        {"РҐР»РµР±", 200.0, "СЂСѓР±"},
+        {"Р™РѕРіСѓСЂС‚", 175.0, "СЂСѓР±"},
     };
 
     writeProducts(filename, products);
 
-    // Чтение самого дорогого продукта из файла
+    // Р§С‚РµРЅРёРµ СЃР°РјРѕРіРѕ РґРѕСЂРѕРіРѕРіРѕ РїСЂРѕРґСѓРєС‚Р° РёР· С„Р°Р№Р»Р°
     Product mostExpensiveProduct = readMostExpensiveProduct(filename);
 
-    // Вывод информации о самом дорогом продукте
-    cout << "Самый дорогой товар:\n";
-    cout << "Наименование: " << mostExpensiveProduct.name << '\n';
-    cout << "Стоимость: " << mostExpensiveProduct.price << '\n';
-    cout << "Единица измерения: " << mostExpensiveProduct.unit << '\n';
+    // Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃР°РјРѕРј РґРѕСЂРѕРіРѕРј РїСЂРѕРґСѓРєС‚Рµ
+    cout << "РЎР°РјС‹Р№ РґРѕСЂРѕРіРѕР№ С‚РѕРІР°СЂ:\n";
+    cout << "РќР°РёРјРµРЅРѕРІР°РЅРёРµ: " << mostExpensiveProduct.name << '\n';
+    cout << "РЎС‚РѕРёРјРѕСЃС‚СЊ: " << mostExpensiveProduct.price << '\n';
+    cout << "Р•РґРёРЅРёС†Р° РёР·РјРµСЂРµРЅРёСЏ: " << mostExpensiveProduct.unit << '\n';
 
     return 0;
 }
