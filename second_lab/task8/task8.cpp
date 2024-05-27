@@ -2,14 +2,14 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include <cctype> // Для функции toupper
+#include <cctype> // Р”Р»СЏ С„СѓРЅРєС†РёРё toupper
 
 using namespace std;
 
 void writeToFile(const string& filename, const vector<char>& data) {
     ofstream file(filename, ios::binary);
     if (!file) {
-        throw runtime_error("Не удалось открыть файл для записи: " + filename);
+        throw runtime_error("РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё: " + filename);
     }
     file.write(reinterpret_cast<const char*>(data.data()), data.size() * sizeof(char));
     file.close();
@@ -18,7 +18,7 @@ void writeToFile(const string& filename, const vector<char>& data) {
 vector<char> readFromFile(const string& filename) {
     ifstream file(filename, ios::binary);
     if (!file) {
-        throw runtime_error("Не удалось открыть файл для чтения: " + filename);
+        throw runtime_error("РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РґР»СЏ С‡С‚РµРЅРёСЏ: " + filename);
     }
     file.seekg(0, ios::end);
     streamsize size = file.tellg();
@@ -47,29 +47,29 @@ int main() {
     setlocale(LC_ALL, "ru");
     string filename = "products.dat";
 
-    // Ввод символов
-    cout << "Введите символы латинского алфавита: ";
+    // Р’РІРѕРґ СЃРёРјРІРѕР»РѕРІ
+    cout << "Р’РІРµРґРёС‚Рµ СЃРёРјРІРѕР»С‹ Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°: ";
     string input;
     getline(cin, input);
     vector<char> data(input.begin(), input.end());
 
-    // Запись данных в бинарный файл
+    // Р—Р°РїРёСЃСЊ РґР°РЅРЅС‹С… РІ Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р»
     writeToFile(filename, data);
 
-    // Чтение данных из файла и вывод на экран
+    // Р§С‚РµРЅРёРµ РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р° Рё РІС‹РІРѕРґ РЅР° СЌРєСЂР°РЅ
     vector<char> fileData = readFromFile(filename);
-    cout << "Символы до изменения: ";
+    cout << "РЎРёРјРІРѕР»С‹ РґРѕ РёР·РјРµРЅРµРЅРёСЏ: ";
     printData(fileData);
 
-    // Преобразование символов в заглавные
+    // РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ СЃРёРјРІРѕР»РѕРІ РІ Р·Р°РіР»Р°РІРЅС‹Рµ
     convertToUpper(fileData);
 
-    // Запись измененных данных обратно в файл
+    // Р—Р°РїРёСЃСЊ РёР·РјРµРЅРµРЅРЅС‹С… РґР°РЅРЅС‹С… РѕР±СЂР°С‚РЅРѕ РІ С„Р°Р№Р»
     writeToFile(filename, fileData);
 
-    // Чтение измененных данных из файла и вывод на экран
+    // Р§С‚РµРЅРёРµ РёР·РјРµРЅРµРЅРЅС‹С… РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р° Рё РІС‹РІРѕРґ РЅР° СЌРєСЂР°РЅ
     fileData = readFromFile(filename);
-    cout << "Символы после изменения: ";
+    cout << "РЎРёРјРІРѕР»С‹ РїРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ: ";
     printData(fileData);
 
     return 0;
