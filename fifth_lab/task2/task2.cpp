@@ -8,45 +8,45 @@ using namespace std;
 template <typename T>
 class Stack {
 private:
-    vector<T> data; // std::vector для хранения элементов стека
+    vector<T> data; // std::vector РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ СЃС‚РµРєР°
 
 public:
-    // Добавление элемента в стек
+    // Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ СЃС‚РµРє
     void push(const T& value) {
         data.push_back(value);
     }
 
-    // Удаление элемента из стека
+    // РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РёР· СЃС‚РµРєР°
     void pop() {
         if (!data.empty()) {
             data.pop_back();
         }
         else {
-            cout << "Стек пуст. Невозможно удалить элемент." << endl;
+            cout << "РЎС‚РµРє РїСѓСЃС‚. РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚." << endl;
         }
     }
 
-    // Получение верхнего элемента стека
+    // РџРѕР»СѓС‡РµРЅРёРµ РІРµСЂС…РЅРµРіРѕ СЌР»РµРјРµРЅС‚Р° СЃС‚РµРєР°
     T top() const {
         if (!data.empty()) {
             return data.back();
         }
         else {
-            throw out_of_range("Стек пуст. Нет верхнего элемента.");
+            throw out_of_range("РЎС‚РµРє РїСѓСЃС‚. РќРµС‚ РІРµСЂС…РЅРµРіРѕ СЌР»РµРјРµРЅС‚Р°.");
         }
     }
 
-    // Проверка, пуст ли стек
+    // РџСЂРѕРІРµСЂРєР°, РїСѓСЃС‚ Р»Рё СЃС‚РµРє
     bool empty() const {
         return data.empty();
     }
 
-    // Получение размера стека
+    // РџРѕР»СѓС‡РµРЅРёРµ СЂР°Р·РјРµСЂР° СЃС‚РµРєР°
     size_t size() const {
         return data.size();
     }
 
-    // Вывод всех элементов стека
+    // Р’С‹РІРѕРґ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ СЃС‚РµРєР°
     void printAll() const {
         for (const auto& item : data) {
             cout << item << endl;
@@ -54,32 +54,32 @@ public:
     }
 };
 
-// Структура для хранения заявки
+// РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Р·Р°СЏРІРєРё
 struct TicketRequest {
     string destination;
     string flightNumber;
     string passengerName;
     string departureDate;
 
-    // Перегрузка оператора вывода для удобного отображения заявки
+    // РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° РІС‹РІРѕРґР° РґР»СЏ СѓРґРѕР±РЅРѕРіРѕ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ Р·Р°СЏРІРєРё
     friend ostream& operator<<(ostream& os, const TicketRequest& request) {
-        os << "Пункт назначения: " << request.destination << endl;
-        os << "Номер рейса: " << request.flightNumber << endl;
-        os << "Пассажир: " << request.passengerName << endl;
-        os << "Дата вылета: " << request.departureDate << endl;
+        os << "РџСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ: " << request.destination << endl;
+        os << "РќРѕРјРµСЂ СЂРµР№СЃР°: " << request.flightNumber << endl;
+        os << "РџР°СЃСЃР°Р¶РёСЂ: " << request.passengerName << endl;
+        os << "Р”Р°С‚Р° РІС‹Р»РµС‚Р°: " << request.departureDate << endl;
         return os;
     }
 };
 
 void displayMenu() {
-    cout << "\nМеню:" << endl;
-    cout << "1. Добавить заявку" << endl;
-    cout << "2. Удалить последнюю заявку" << endl;
-    cout << "3. Показать последнюю заявку" << endl;
-    cout << "4. Показать все заявки" << endl;
-    cout << "5. Найти заявки по номеру рейса и дате вылета" << endl;
-    cout << "0. Выйти" << endl;
-    cout << "Выберите действие: ";
+    cout << "\nРњРµРЅСЋ:" << endl;
+    cout << "1. Р”РѕР±Р°РІРёС‚СЊ Р·Р°СЏРІРєСѓ" << endl;
+    cout << "2. РЈРґР°Р»РёС‚СЊ РїРѕСЃР»РµРґРЅСЋСЋ Р·Р°СЏРІРєСѓ" << endl;
+    cout << "3. РџРѕРєР°Р·Р°С‚СЊ РїРѕСЃР»РµРґРЅСЋСЋ Р·Р°СЏРІРєСѓ" << endl;
+    cout << "4. РџРѕРєР°Р·Р°С‚СЊ РІСЃРµ Р·Р°СЏРІРєРё" << endl;
+    cout << "5. РќР°Р№С‚Рё Р·Р°СЏРІРєРё РїРѕ РЅРѕРјРµСЂСѓ СЂРµР№СЃР° Рё РґР°С‚Рµ РІС‹Р»РµС‚Р°" << endl;
+    cout << "0. Р’С‹Р№С‚Рё" << endl;
+    cout << "Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ: ";
 }
 
 int main() {
@@ -95,23 +95,23 @@ int main() {
         switch (choice) {
         case 1: {
             TicketRequest request;
-            cout << "Введите пункт назначения: ";
-            cin >> ws; // Игнорировать пробелы перед вводом строки
+            cout << "Р’РІРµРґРёС‚Рµ РїСѓРЅРєС‚ РЅР°Р·РЅР°С‡РµРЅРёСЏ: ";
+            cin >> ws; // РРіРЅРѕСЂРёСЂРѕРІР°С‚СЊ РїСЂРѕР±РµР»С‹ РїРµСЂРµРґ РІРІРѕРґРѕРј СЃС‚СЂРѕРєРё
             getline(cin, request.destination);
-            cout << "Введите номер рейса: ";
+            cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ СЂРµР№СЃР°: ";
             getline(cin, request.flightNumber);
-            cout << "Введите фамилию и инициалы пассажира: ";
+            cout << "Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ Рё РёРЅРёС†РёР°Р»С‹ РїР°СЃСЃР°Р¶РёСЂР°: ";
             getline(cin, request.passengerName);
-            cout << "Введите желаемую дату вылета (дд.мм.гггг): ";
+            cout << "Р’РІРµРґРёС‚Рµ Р¶РµР»Р°РµРјСѓСЋ РґР°С‚Сѓ РІС‹Р»РµС‚Р° (РґРґ.РјРј.РіРіРіРі): ";
             getline(cin, request.departureDate);
             ticketStack.push(request);
-            cout << "Заявка добавлена." << endl;
+            cout << "Р—Р°СЏРІРєР° РґРѕР±Р°РІР»РµРЅР°." << endl;
             break;
         }
         case 2: {
             try {
                 ticketStack.pop();
-                cout << "Последняя заявка удалена." << endl;
+                cout << "РџРѕСЃР»РµРґРЅСЏСЏ Р·Р°СЏРІРєР° СѓРґР°Р»РµРЅР°." << endl;
             }
             catch (const out_of_range& e) {
                 cout << e.what() << endl;
@@ -120,7 +120,7 @@ int main() {
         }
         case 3: {
             try {
-                cout << "Последняя заявка:" << endl;
+                cout << "РџРѕСЃР»РµРґРЅСЏСЏ Р·Р°СЏРІРєР°:" << endl;
                 cout << ticketStack.top() << endl;
             }
             catch (const out_of_range& e) {
@@ -129,19 +129,19 @@ int main() {
             break;
         }
         case 4: {
-            cout << "Все заявки:" << endl;
+            cout << "Р’СЃРµ Р·Р°СЏРІРєРё:" << endl;
             ticketStack.printAll();
             break;
         }
         case 5: {
             string flightNumber, departureDate;
-            cout << "Введите номер рейса: ";
+            cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ СЂРµР№СЃР°: ";
             cin >> ws;
             getline(cin, flightNumber);
-            cout << "Введите дату вылета (дд.мм.гггг): ";
+            cout << "Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ РІС‹Р»РµС‚Р° (РґРґ.РјРј.РіРіРіРі): ";
             getline(cin, departureDate);
-            cout << "Заявки с номером рейса " << flightNumber << " и датой вылета " << departureDate << ":" << endl;
-            Stack<TicketRequest> tempStack; // Временный стек для поиска
+            cout << "Р—Р°СЏРІРєРё СЃ РЅРѕРјРµСЂРѕРј СЂРµР№СЃР° " << flightNumber << " Рё РґР°С‚РѕР№ РІС‹Р»РµС‚Р° " << departureDate << ":" << endl;
+            Stack<TicketRequest> tempStack; // Р’СЂРµРјРµРЅРЅС‹Р№ СЃС‚РµРє РґР»СЏ РїРѕРёСЃРєР°
             bool found = false;
             while (!ticketStack.empty()) {
                 if (ticketStack.top().flightNumber == flightNumber && ticketStack.top().departureDate == departureDate) {
@@ -151,21 +151,21 @@ int main() {
                 tempStack.push(ticketStack.top());
                 ticketStack.pop();
             }
-            // Восстанавливаем оригинальный стек
+            // Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµРј РѕСЂРёРіРёРЅР°Р»СЊРЅС‹Р№ СЃС‚РµРє
             while (!tempStack.empty()) {
                 ticketStack.push(tempStack.top());
                 tempStack.pop();
             }
             if (!found) {
-                cout << "Заявок с таким номером рейса и датой вылета не найдено." << endl;
+                cout << "Р—Р°СЏРІРѕРє СЃ С‚Р°РєРёРј РЅРѕРјРµСЂРѕРј СЂРµР№СЃР° Рё РґР°С‚РѕР№ РІС‹Р»РµС‚Р° РЅРµ РЅР°Р№РґРµРЅРѕ." << endl;
             }
             break;
         }
         case 0:
-            cout << "Выход из программы." << endl;
+            cout << "Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹." << endl;
             break;
         default:
-            cout << "Неверный выбор. Повторите попытку." << endl;
+            cout << "РќРµРІРµСЂРЅС‹Р№ РІС‹Р±РѕСЂ. РџРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ." << endl;
             break;
         }
     } while (choice != 0);
